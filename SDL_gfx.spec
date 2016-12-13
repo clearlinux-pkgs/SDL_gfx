@@ -4,7 +4,7 @@
 #
 Name     : SDL_gfx
 Version  : 2.0.25
-Release  : 3
+Release  : 4
 URL      : http://www.ferzkopp.net/Software/SDL_gfx-2.0/SDL_gfx-2.0.25.tar.gz
 Source0  : http://www.ferzkopp.net/Software/SDL_gfx-2.0/SDL_gfx-2.0.25.tar.gz
 Summary  : SDL graphics drawing primitives and other support functions
@@ -12,6 +12,9 @@ Group    : Development/Tools
 License  : Zlib
 Requires: SDL_gfx-lib
 BuildRequires : SDL-dev
+BuildRequires : SDL-dev32
+BuildRequires : pkgconfig(32ice)
+BuildRequires : pkgconfig(32x11)
 BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(x11)
 
@@ -50,14 +53,15 @@ lib components for the SDL_gfx package.
 
 
 %prep
-cd ..
 %setup -q -n SDL_gfx-2.0.25
 
 %build
+export LANG=C
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost
@@ -78,9 +82,10 @@ rm -rf %{buildroot}
 /usr/include/SDL/SDL_gfxPrimitives_font.h
 /usr/include/SDL/SDL_imageFilter.h
 /usr/include/SDL/SDL_rotozoom.h
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libSDL_gfx.so
+/usr/lib64/pkgconfig/SDL_gfx.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libSDL_gfx.so.15
+/usr/lib64/libSDL_gfx.so.15.9.1
