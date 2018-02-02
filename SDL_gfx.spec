@@ -4,7 +4,7 @@
 #
 Name     : SDL_gfx
 Version  : 2.0.25
-Release  : 7
+Release  : 8
 URL      : http://www.ferzkopp.net/Software/SDL_gfx-2.0/SDL_gfx-2.0.25.tar.gz
 Source0  : http://www.ferzkopp.net/Software/SDL_gfx-2.0/SDL_gfx-2.0.25.tar.gz
 Summary  : SDL graphics drawing primitives and other support functions
